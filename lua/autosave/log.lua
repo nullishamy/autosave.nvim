@@ -1,7 +1,7 @@
 local M = {}
 
 local function do_log(msg, level)
-  vim.notify('[autosave] ' .. msg, level, { title = 'nvim-compile' })
+  vim.notify('[autosave] ' .. msg, level, { title = 'autosave' })
 end
 
 function M.info(msg)

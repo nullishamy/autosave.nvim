@@ -1,10 +1,37 @@
-# autosave.nvim
+<p align="center">
+  <h1 align="center">autosave.nvim</h1>
+</p>
 
-This is a simple autosave plugin for neovim that aims to improve on existing solutions by being more stable, less bug prone
-and more customisable
+A simple autosave plugin for neovim that aims to improve on existing solutions by being more stable, less bug prone
+and more customisable.
+
+This project uses semantic versioning, with a promise for backwards compatiblity, so you never experience unexpected changes.
 
 ## Dependencies
 - [plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
+
+## Installation
+
+Install with your preferred package manager
+<details>
+	<summary><a href="https://github.com/wbthomason/packer.nvim">packer.nvim</a></summary>
+
+```lua
+use({
+  "nullishamy/autosave.nvim",
+})
+```
+
+</details>
+
+<details>
+	<summary><a href="https://github.com/junegunn/vim-plug">vim-plug</a></summary>
+
+```vim
+Plug 'nullishamy/autosave.nvim'
+```
+
+</details>
 
 ## Configuration
 This plugin has the usual setup method. Below are the defaults:

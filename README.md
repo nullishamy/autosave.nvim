@@ -49,6 +49,9 @@ local filters = require('autosave.filters')
 -- filters.custom 
 -- Each filter has luadoc to describe its functionality and usage.
 require('autosave').setup({
+    plugin = {
+        force = false, -- Whether to forcefully write or not (:w!)
+    },
     events = {
         register = true, -- Should autosave register its autocommands
         triggers = { -- The autocommands to register, if enabled

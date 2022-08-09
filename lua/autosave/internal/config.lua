@@ -2,6 +2,9 @@ local tbl = require("plenary.tbl")
 
 local filters = require("autosave.filters")
 local DEFAULTS = {
+	plugin = {
+		force = false,
+	},
 	events = {
 		register = true,
 		triggers = {

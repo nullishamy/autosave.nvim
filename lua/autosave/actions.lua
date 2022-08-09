@@ -18,7 +18,7 @@ local function handle_save(cfg)
 		end
 
 		vim.api.nvim_buf_call(buf, function()
-			vim.cmd("write")
+			vim.cmd("write" .. (cfg.plugin.force and '!' or ''))
 		end)
 		require("autosave.internal.events").fire_hook("post_write")
 	end

@@ -38,6 +38,8 @@ This plugin has the usual setup method. Below are the defaults:
 ```lua
 local filters = require('autosave.filters')
 -- Available filters:
+-- filters.git_repo
+-- filters.invert
 -- filters.opt 
 -- filters.not_empty 
 -- filters.modifiable 

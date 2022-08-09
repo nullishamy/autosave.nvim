@@ -1,7 +1,7 @@
 local autosave = {}
-local config = require("autosave.config")
-local log = require("autosave.log")
-local events = require("autosave.events")
+local config = require("autosave.internal.config")
+local log = require("autosave.internal.log")
+local events = require("autosave.internal.events")
 
 function autosave.setup(opts)
 	assert(opts ~= nil, "opts were nil")
@@ -17,7 +17,8 @@ function autosave.setup(opts)
 	end
 
 	autosave.enabled = true
-	require("autosave.events").fire_hook("on_enable")
+
+	require("autosave.internal.events").fire_hook("on_enable")
 end
 
 autosave.enabled = false

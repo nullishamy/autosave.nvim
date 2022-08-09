@@ -9,7 +9,7 @@ local function handle_save(cfg)
 	local buf = vim.api.nvim_get_current_buf()
 
 	local function do_save()
-		require("autosave.events").fire_hook("pre_write")
+		require("autosave.internal.events").fire_hook("pre_write")
 		-- If any filter fails, abort
 		for _, cond in pairs(cfg.filters) do
 			if not cond(buf) then
@@ -20,7 +20,7 @@ local function handle_save(cfg)
 		vim.api.nvim_buf_call(buf, function()
 			vim.cmd("write")
 		end)
-		require("autosave.events").fire_hook("post_write")
+		require("autosave.internal.events").fire_hook("post_write")
 	end
 
 	if cfg.debounce.enabled then
@@ -44,7 +44,7 @@ local function handle_save(cfg)
 end
 
 function actions.save()
-	local cfg = require("autosave.config").get()
+	local cfg = require("autosave.internal.config").get()
 
 	if not as.enabled then
 		return

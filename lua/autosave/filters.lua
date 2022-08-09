@@ -75,7 +75,7 @@ function filters.custom(cb)
 	local inner_custom = function(bufnr)
 		local ok, res = pcall(cb, bufnr)
 		if not ok then
-			require("autosave.log").error(string.format("error occured in custom callback %s", res))
+			require("autosave.internal.log").error(string.format("error occured in custom callback %s", res))
 			return false
 		end
 

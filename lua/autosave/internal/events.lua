@@ -1,7 +1,7 @@
 local events = {}
 
 function events.register()
-	local cfg = require("autosave.config").get()
+	local cfg = require("autosave.internal.config").get()
 	vim.api.nvim_create_autocmd(cfg.events.triggers, {
 		callback = function()
 			require("autosave.actions").save()
@@ -10,7 +10,7 @@ function events.register()
 end
 
 function events.fire_hook(key)
-	local cfg = require("autosave.config").get()
+	local cfg = require("autosave.internal.config").get()
 
 	local hook = cfg.hooks[key]
 

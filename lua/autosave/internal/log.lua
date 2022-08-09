@@ -1,19 +1,19 @@
-local M = {}
+local log = {}
 
 local function do_log(msg, level)
 	vim.notify("[autosave] " .. msg, level, { title = "autosave" })
 end
 
-function M.info(msg)
+function log.info(msg)
 	do_log(msg, vim.log.levels.INFO)
 end
 
-function M.warn(msg)
+function log.warn(msg)
 	do_log(msg, vim.log.levels.WARN)
 end
 
-function M.error(msg)
+function log.error(msg)
 	do_log(msg, vim.log.levels.ERROR)
 end
 
-return M
+return log

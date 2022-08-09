@@ -1,7 +1,10 @@
 local tbl = require("plenary.tbl")
-
 local filters = require("autosave.filters")
+
 local DEFAULTS = {
+	plugin = {
+		force = false,
+	},
 	events = {
 		register = true,
 		triggers = {
@@ -20,6 +23,7 @@ local DEFAULTS = {
 	},
 	hooks = {
 		on_enable = nil,
+		pre_filter = nil,
 		pre_write = nil,
 		post_write = nil,
 	},

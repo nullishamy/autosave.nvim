@@ -26,30 +26,26 @@ local DEFAULTS = {
 }
 
 local config = {}
+config.defaults = DEFAULTS
 
-local function is_set()
+function config.is_set()
 	return config.data ~= nil
 end
 
-local function get()
-	assert(is_set(), "config was not set, call apply first")
+function config.get()
+	assert(config.is_set(), "config was not set, call apply first")
 	return config.data
 end
 
-local function apply(opts)
+function config.apply(opts)
 	assert(opts ~= nil, "config opts were nil")
 
 	-- This is probably a bug if this happens
-	assert(not is_set(), "attempted to set config more than once")
+	assert(not config.is_set(), "attempted to set config more than once")
 
 	config.data = vim.deepcopy(opts)
 	config.data = tbl.apply_defaults(config.data, DEFAULTS)
-	return get()
+	return config.get()
 end
 
-return {
-	apply = apply,
-	get = get,
-	is_set = is_set,
-	defaults = DEFAULTS,
-}
+return config

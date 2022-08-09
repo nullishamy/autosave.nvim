@@ -3,6 +3,18 @@ local filters = {}
 --- API NOTE
 --- If filters return false, execution halts
 
+
+--- Inverts the given `filter`
+---@param filter function The filter to invert
+---@return function The inverted filter
+function filters.invert(filter)
+	local inner_not = function (...)
+		return not filter(...)
+	end
+
+	return inner_not
+end
+
 --- Require that the buffer has the option with key `key` set to `value`
 ---@param key string The key to use
 ---@param value unknown The value to check against

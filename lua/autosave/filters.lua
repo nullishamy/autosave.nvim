@@ -51,10 +51,11 @@ end
 --- Require that the buffer is writeable:
 --- 1) It is loaded and valid according to nvim. This means it can be read.
 --- 2) It has no buftype set. buftype indicates it is not a regular buffer than can be written
+--- 3) It has a filename set
 ---@param bufnr integer The buffer to check
 ---@return boolean
 function filters.writeable(bufnr)
-	return vim.api.nvim_buf_is_loaded(bufnr) and filters.opt("buftype", "")(bufnr)
+	return vim.api.nvim_buf_is_loaded(bufnr) and filters.opt("buftype", "")(bufnr) and string.len(vim.api.nvim_buf_get_name(0)) > 0
 end
 
 --- Require that the buffer has been modified, that is has the `modified` option set

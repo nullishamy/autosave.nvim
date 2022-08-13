@@ -91,3 +91,17 @@ require('autosave').setup({
     }
 })
  ```
+  
+## Actions
+
+This plugin exposes a Lua API for performing various actions.
+All actions require the plugin to have been setup with the `setup()` method, detailed above, to work properly.
+
+```lua
+local actions = require('autosave.actions')
+
+actions.enable() -- Enable the plugin.
+actions.disable() -- Disable the plugin.
+actions.toggle() -- Toggle the plugin on or off.
+actions.save() -- Run the save sequence.
+```

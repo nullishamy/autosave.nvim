@@ -23,6 +23,7 @@ local DEFAULTS = {
 	},
 	hooks = {
 		on_enable = nil,
+		pre_filter = nil,
 		pre_write = nil,
 		post_write = nil,
 	},

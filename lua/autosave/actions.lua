@@ -9,13 +9,15 @@ local function handle_save(cfg)
 	local buf = vim.api.nvim_get_current_buf()
 
 	local function do_save()
-		require("autosave.internal.events").fire_hook("pre_write")
+		require("autosave.internal.events").fire_hook("pre_filter")
 		-- If any filter fails, abort
 		for _, cond in pairs(cfg.filters) do
 			if not cond(buf) then
 				return
 			end
 		end
+
+		require("autosave.internal.events").fire_hook("pre_write")
 
 		vim.api.nvim_buf_call(buf, function()
 			vim.cmd("write" .. (cfg.plugin.force and '!' or ''))

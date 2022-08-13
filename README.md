@@ -69,8 +69,25 @@ require('autosave').setup({
     },
     hooks = {
         on_enable = nil,  -- Called when the plugin is enabled for the first time.
-        pre_write = nil,  -- Called before the write sequence begins. (This happens before filter checks)
+        pre_filter = nil,  -- Called before the write sequence begins. (This happens before filter checks)
+        pre_write = nil, -- Called before the buffer is written (This happens after all checks pass)
         post_write = nil, -- Called after the write sequence. (This happens after the buffer has been saved)
     }
 })
 ```
+ 
+ ## Format on save
+
+ When using an on-save format solution with this plugin, special care needs to be taken to avoid errors or strange behaviour.
+
+ It is advised to put the formatting logic in the `pre_write` hook.
+
+ ```lua
+require('autosave').setup({
+    hooks = {
+        pre_write = function()
+            vim.cmd [[ Neoformat ]]
+        end
+    }
+})
+ ```

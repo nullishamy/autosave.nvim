@@ -63,6 +63,8 @@ require('autosave').setup({
         delay = 250 -- If enabled, only save the file at most every `delay` ms
     },
     filters = { -- The filters to apply, see above for all options.
+        -- These filters are required for basic operation as they prevent
+        -- errors related to to buffer state.
         filters.writeable,
         filters.not_empty,
         filters.modified,

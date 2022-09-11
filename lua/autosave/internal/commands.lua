@@ -10,7 +10,7 @@ function commands.init()
 		command! ASDisable  lua require('autosave.actions').buf_disable()
 		command! ASToggle   lua require('autosave.actions').buf_toggle()
 
-		command! ASSTatus   lua require('autosave.actions').show_status()
+		command! ASStatus   lua require('autosave.actions').show_status()
 	]]
 end
 

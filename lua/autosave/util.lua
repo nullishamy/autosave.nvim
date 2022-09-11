@@ -11,4 +11,16 @@ function util.execute_command(cmd)
 	end
 end
 
+function util.buf_enabled(bufnr)
+	local as = require('autosave')
+
+	-- If the buffer is disabled, or the plugin is globally disabled, return false
+	local buf = as.buffers[bufnr]
+	if buf == false then
+		return false
+	end
+
+	return as.enabled
+end
+
 return util

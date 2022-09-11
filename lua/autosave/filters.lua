@@ -5,7 +5,7 @@ local util = require('autosave.util')
 --- If filters return false, execution halts
 
 --- Require that the current workspace is a git directory
----@return boolean 
+---@return boolean
 function filters.git_repo()
 	local ok, _ = util.execute_command({ 'git', 'rev-parse', '--is-inside-work-tree' })
 	return ok
@@ -13,7 +13,7 @@ end
 
 --- Inverts the given `filter`
 ---@param filter function The filter to invert
----@return function The inverted filter
+---@return function
 function filters.invert(filter)
 	local inner_not = function(...)
 		return not filter(...)

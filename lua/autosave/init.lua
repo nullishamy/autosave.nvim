@@ -19,6 +19,7 @@ function autosave.setup(opts)
 	end
 
 	autosave.enabled = true
+	autosave.buffers = {}
 
 	require("autosave.internal.events").fire_hook("on_enable")
 	commands.init()

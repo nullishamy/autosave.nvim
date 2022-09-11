@@ -20,9 +20,10 @@ local function handle_save(cfg)
 		require("autosave.internal.events").fire_hook("pre_write")
 
 		vim.api.nvim_buf_call(buf, function()
-			vim.cmd("write" .. (cfg.plugin.force and '!' or ''))
+			vim.cmd("silent write" .. (cfg.plugin.force and '!' or ''))
 		end)
-		require("autosave.internal.events").fire_hook("post_write")
+
+		require("autosave.events").fire_hook("post_write")
 	end
 
 	if cfg.debounce.enabled then
@@ -69,6 +70,10 @@ function actions.toggle()
 	else
 		as.enabled = true
 	end
+end
+
+function actions.show_status()
+	print(string.format("AutoSave: enabled=%s", as.enabled))
 end
 
 return actions

@@ -70,10 +70,10 @@ require('autosave').setup({
         filters.modified,
     },
     hooks = {
-        on_enable = nil,  -- Called when the plugin is enabled for the first time.
+        on_enable = nil,   -- Called when the plugin is enabled for the first time.
         pre_filter = nil,  -- Called before the write sequence begins. (This happens before filter checks)
-        pre_write = nil, -- Called before the buffer is written (This happens after all checks pass)
-        post_write = nil, -- Called after the write sequence. (This happens after the buffer has been saved)
+        pre_write = nil,   -- Called before the buffer is written (This happens after all checks pass)
+        post_write = nil,  -- Called after the write sequence. (This happens after the buffer has been saved)
     }
 })
 ```
@@ -102,8 +102,28 @@ All actions require the plugin to have been setup with the `setup()` method, det
 ```lua
 local actions = require('autosave.actions')
 
-actions.enable() -- Enable the plugin.
-actions.disable() -- Disable the plugin.
-actions.toggle() -- Toggle the plugin on or off.
-actions.save() -- Run the save sequence.
+actions.buf_enable()     -- Enable the plugin for the current buffer.
+actions.buf_disable()    -- Disable the plugin for the current buffer.
+actions.buf_toggle()     -- Toggle the plugin on or off for the current buffer.
+
+actions.global_enable()  -- Enable the plugin globally.
+actions.global_disable() -- Disable the plugin globally.
+actions.global_toggle()  -- Toggle the plugin on or off globally.
+
+actions.save()           -- Run the save sequence.
+actions.show_status()    -- Display the status of the plugin.
 ```
+
+## Ex-commands
+
+Each of the above actions has a corresponding ex-command, listed below.
+
+:ASGlobalEnable   -- Enable the plugin globally.
+:ASGlobalDisable  -- Disable the plugin globally.
+:ASGlobalToggle   -- Toggle the plugin on or off globally.
+
+:ASEnable         -- Enable the plugin for the current buffer.           
+:ASDisable        -- Disable the plugin for the current buffer.
+:ASToggle         -- Toggle the plugin on or off for the current buffer.
+
+:ASStatus         -- Display the status of the plugin.
